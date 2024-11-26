@@ -1,17 +1,20 @@
 const express = require('express')
 
-const productRouters = require("./routes/products")
+const clientsRoutes = require("./route/client.js")
+const productsRoutes = require("./route/product.js")
 
-const port = 4000
+const PORT = 3000
 
 const app = express();
 
-app.use("/produtos", productRouters)
+app.use("/clientes", clientsRoutes)
 
-app.use("/", (req, res) => {
-    return res.send("API de Gerenciamento de Produtos.")
+app.use("/produtos", productsRoutes)
+
+app.use("/", (req, res) =>{
+    return res.send("API de Gerenciamento de Compras")
 })
 
-app.listen(port, () => {
-    console.log("Server listening in port " + port)
+app.listen(PORT, () => { 
+    console.log("Server running in port " + PORT)
 })
