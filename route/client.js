@@ -16,4 +16,12 @@ clientRouter.get("", (req, res) => {
     }
 })
 
+clientRouter.post("", (req, res) =>{
+    try{
+       return clientController.create(req, res);
+    } catch (e){
+        return res.status(500).json({message: "Erro ao cadastrar cliente."})
+    }
+})
+
 module.exports = clientRouter;

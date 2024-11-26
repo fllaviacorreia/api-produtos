@@ -1,7 +1,9 @@
+const { v4: uuidv4 } = require('uuid');
+
 let clients = []
 
 const getAll = () => {
-    return clients
+    return clients;
 }
 
 const getById = (id) => {
@@ -10,7 +12,27 @@ const getById = (id) => {
 
 }
 
+const getByEmail = (email) => {
+    const client = clients.filter(client => client.email === email)
+    return client
+}
+
+const create = (name, email, bornDate) => {
+    const client = {
+        id: uuidv4(),
+        name,
+        email,
+        bornDate,
+    }
+
+    clients.push(client);
+
+    return client
+}
+
 module.exports = {
     getAll,
-    getById
+    getById,
+    create,
+    getByEmail
 }
